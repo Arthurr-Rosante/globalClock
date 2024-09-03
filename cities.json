@@ -1,0 +1,162 @@
+[
+  {
+    "name": "Tóquio",
+    "originCountry": "Japão",
+    "latitude": 35.6895,
+    "longitude": 139.6917,
+    "timezone": "Asia/Tokyo",
+    "timezoneOffset": 12
+  },
+  {
+    "name": "Delhi",
+    "originCountry": "Índia",
+    "latitude": 28.6139,
+    "longitude": 77.209,
+    "timezone": "Asia/Kolkata",
+    "timezoneOffset": 8.5
+  },
+  {
+    "name": "Xangai",
+    "originCountry": "China",
+    "latitude": 31.2304,
+    "longitude": 121.4737,
+    "timezone": "Asia/Shanghai",
+    "timezoneOffset": 11
+  },
+  {
+    "name": "São Paulo",
+    "originCountry": "Brasil",
+    "latitude": -23.5505,
+    "longitude": -46.6333,
+    "timezone": "America/Sao_Paulo",
+    "timezoneOffset": 0
+  },
+  {
+    "name": "Cidade do México",
+    "originCountry": "México",
+    "latitude": 19.4326,
+    "longitude": -99.1332,
+    "timezone": "America/Mexico_City",
+    "timezoneOffset": -3
+  },
+  {
+    "name": "Cairo",
+    "originCountry": "Egito",
+    "latitude": 30.0444,
+    "longitude": 31.2357,
+    "timezone": "Africa/Cairo",
+    "timezoneOffset": 5
+  },
+  {
+    "name": "Mumbai",
+    "originCountry": "Índia",
+    "latitude": 19.076,
+    "longitude": 72.8777,
+    "timezone": "Asia/Kolkata",
+    "timezoneOffset": 8.5
+  },
+  {
+    "name": "Pequim",
+    "originCountry": "China",
+    "latitude": 39.9042,
+    "longitude": 116.4074,
+    "timezone": "Asia/Shanghai",
+    "timezoneOffset": 11
+  },
+  {
+    "name": "Dhaka",
+    "originCountry": "Bangladesh",
+    "latitude": 23.8103,
+    "longitude": 90.4125,
+    "timezone": "Asia/Dhaka",
+    "timezoneOffset": 9
+  },
+  {
+    "name": "Osaka",
+    "originCountry": "Japão",
+    "latitude": 34.6937,
+    "longitude": 135.5023,
+    "timezone": "Asia/Tokyo",
+    "timezoneOffset": 12
+  },
+  {
+    "name": "Nova Iorque",
+    "originCountry": "EUA",
+    "latitude": 40.7128,
+    "longitude": -74.006,
+    "timezone": "America/New_York",
+    "timezoneOffset": -2
+  },
+  {
+    "name": "Karachi",
+    "originCountry": "Paquistão",
+    "latitude": 24.8607,
+    "longitude": 67.0011,
+    "timezone": "Asia/Karachi",
+    "timezoneOffset": 8
+  },
+  {
+    "name": "Buenos Aires",
+    "originCountry": "Argentina",
+    "latitude": -34.6037,
+    "longitude": -58.3816,
+    "timezone": "America/Argentina/Buenos_Aires",
+    "timezoneOffset": 0
+  },
+  {
+    "name": "Istambul",
+    "originCountry": "Turquia",
+    "latitude": 41.0082,
+    "longitude": 28.9784,
+    "timezone": "Europe/Istanbul",
+    "timezoneOffset": 6
+  },
+  {
+    "name": "Kolkata",
+    "originCountry": "Índia",
+    "latitude": 22.5726,
+    "longitude": 88.3639,
+    "timezone": "Asia/Kolkata",
+    "timezoneOffset": 8.5
+  },
+  {
+    "name": "Manila",
+    "originCountry": "Filipinas",
+    "latitude": 14.5995,
+    "longitude": 120.9842,
+    "timezone": "Asia/Manila",
+    "timezoneOffset": 11
+  },
+  {
+    "name": "Lagos",
+    "originCountry": "Nigéria",
+    "latitude": 6.5244,
+    "longitude": 3.3792,
+    "timezone": "Africa/Lagos",
+    "timezoneOffset": 4
+  },
+  {
+    "name": "Rio de Janeiro",
+    "originCountry": "Brasil",
+    "latitude": -22.9068,
+    "longitude": -43.1729,
+    "timezone": "America/Sao_Paulo",
+    "timezoneOffset": 0
+  },
+  {
+    "name": "Tianjin",
+    "originCountry": "China",
+    "latitude": 39.3434,
+    "longitude": 117.3616,
+    "timezone": "Asia/Shanghai",
+    "timezoneOffset": 11
+  },
+  {
+    "name": "Kinshasa",
+    "originCountry": "República Democrática do Congo",
+    "latitude": -4.4419,
+    "longitude": 15.2663,
+    "timezone": "Africa/Kinshasa",
+    "timezoneOffset": 4
+  }
+]
