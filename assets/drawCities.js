@@ -11,7 +11,7 @@ export default async function drawCities() {
     const cities = await res.json();
     cities.forEach((city) => {
       const color = new THREE.Color(0, Math.random(), Math.random());
-      addDot(city.latitude, city.longitude, color);
+      addDot(city, color);
     });
   } catch (error) {
     console.error(error.message);

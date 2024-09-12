@@ -35,7 +35,10 @@ controls.minPolarAngle = 0.5;
 controls.maxPolarAngle = Math.PI - 0.8;
 controls.enablePan = false;
 
+// ========== RAYCASTER CONFIGURATION ========== //
+
 // ========== THE LIGHTING OF THE SCENE ========== //
+
 const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5);
 directionalLight.position.set(2, 3, 5);
 scene.add(directionalLight);
@@ -48,7 +51,7 @@ const earthGroup = new THREE.Group();
 earthGroup.add(dotsGroup);
 
 scene.add(earthGroup);
-scene.add(stars);
+// scene.add(stars);
 createStars(2000, 20, 50);
 
 earthGroup.add(earth);
@@ -61,6 +64,7 @@ const cloudsRotation = 0.0009; // default => 0.0009
 const starsRotation = 0.0002; // default => 0.0002
 
 // ========== ANIMATION LOOP ========== //
+export const labels = {};
 function animate() {
   requestAnimationFrame(animate);
 
@@ -69,6 +73,33 @@ function animate() {
   clouds.rotation.y += cloudsRotation;
   stars.rotation.y -= starsRotation;
   controls.update();
+
+  dotsGroup.children.forEach((dot) => {
+    const cityName = dot.name;
+    const label = labels[cityName];
+
+    // Converte a posição do ponto para coordenadas em 3D
+    const vector = dot.getWorldPosition(new THREE.Vector3());
+    vector.project(camera);
+
+    const x = (vector.x * 0.5 + 0.5) * window.innerWidth;
+    const y = (vector.y * -0.5 + 0.5) * window.innerHeight;
+
+    // Atualiza a posição da label
+    label.style.left = `${x}px`;
+    label.style.top = `${y}px`;
+
+    // Verifica se a distância é menor que o limite para mostrar o rótulo
+    const distance = camera.position.distanceTo(
+      dot.getWorldPosition(new THREE.Vector3())
+    );
+    if (distance < 1.5) {
+      label.style.display = "block";
+    } else {
+      label.style.display = "none";
+    }
+  });
+
   renderer.render(scene, camera);
 }
 animate();

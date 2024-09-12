@@ -11,3 +11,16 @@ body {
 #canvas {
   display: block;
 }
+
+.city-label {
+  position: absolute;
+  z-index: 100;
+  color: white;
+  font-size: 12px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 2px 5px;
+  border-radius: 1rem;
+
+  pointer-events: none;
+  user-select: none;
+}
