@@ -36,6 +36,27 @@ controls.maxPolarAngle = Math.PI - 0.8;
 controls.enablePan = false;
 
 // ========== RAYCASTER CONFIGURATION ========== //
+const raycaster = new THREE.Raycaster();
+const pointer = new THREE.Vector2();
+
+function onMouseMove(event) {
+  pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
+  pointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+  raycaster.setFromCamera(pointer, camera);
+  const intersections = raycaster.intersectObjects(dotsGroup.children, true);
+}
+
+function onClick(event) {
+  pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
+  pointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+  raycaster.setFromCamera(pointer, camera);
+  const intersections = raycaster.intersectObjects(dotsGroup.children, true);
+}
+
+window.addEventListener("mousemove", onMouseMove);
+window.addEventListener("click", onClick);
 
 // ========== THE LIGHTING OF THE SCENE ========== //
 
@@ -51,7 +72,7 @@ const earthGroup = new THREE.Group();
 earthGroup.add(dotsGroup);
 
 scene.add(earthGroup);
-// scene.add(stars);
+scene.add(stars);
 createStars(2000, 20, 50);
 
 earthGroup.add(earth);
@@ -59,7 +80,7 @@ earthGroup.add(clouds);
 earthGroup.add(atmosphere);
 drawCities();
 
-const earthRotation = 0.0005; // default => 0.0005
+const earthRotation = 0.0; // default => 0.0005
 const cloudsRotation = 0.0009; // default => 0.0009
 const starsRotation = 0.0002; // default => 0.0002
 
@@ -77,10 +98,16 @@ function animate() {
   dotsGroup.children.forEach((dot) => {
     const cityName = dot.name;
     const label = labels[cityName];
+    let vector;
 
-    // Converte a posição do ponto para coordenadas em 3D
-    const vector = dot.getWorldPosition(new THREE.Vector3());
-    vector.project(camera);
+    if (earthRotation === 0) {
+      vector = dot.position.clone();
+      vector.project(camera);
+    } else {
+      // Converte a posição do ponto para coordenadas em 3D
+      vector = dot.getWorldPosition(new THREE.Vector3());
+      vector.project(camera);
+    }
 
     const x = (vector.x * 0.5 + 0.5) * window.innerWidth;
     const y = (vector.y * -0.5 + 0.5) * window.innerHeight;

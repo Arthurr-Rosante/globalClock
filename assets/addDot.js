@@ -3,7 +3,7 @@ import { labels } from "../index.js";
 
 const dotsGroup = new THREE.Group();
 
-function addDot(city, color = 0x33ffd1) {
+function addDot(city, color) {
   const dot = new THREE.Mesh(
     new THREE.SphereGeometry(0.009, 8, 8),
     new THREE.MeshBasicMaterial({ color })

@@ -1,4 +1,3 @@
-import * as THREE from "three";
 import { addDot } from "./addDot.js";
 
 export default async function drawCities() {
@@ -10,7 +9,7 @@ export default async function drawCities() {
 
     const cities = await res.json();
     cities.forEach((city) => {
-      const color = new THREE.Color(0, Math.random(), Math.random());
+      const color = 0xffffff;
       addDot(city, color);
     });
   } catch (error) {
