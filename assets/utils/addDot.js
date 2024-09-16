@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { labels } from "../index.js";
+import { labels } from "../../index.js";
 
 const dotsGroup = new THREE.Group();
 
@@ -10,6 +10,7 @@ function addDot(city, color) {
   );
 
   dot.name = city.name;
+  dot.userData = city;
 
   const radius = 2 + 0.001; // garante que se mantenha acima da superfície
   const phi = THREE.MathUtils.degToRad(90 - city.latitude);

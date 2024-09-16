@@ -4,7 +4,7 @@ export default async function drawCities() {
   try {
     const res = await fetch("../cities.json");
     if (!res.ok) {
-      throw new Error(`Response status: ${response.status}`);
+      throw new Error(`Response status: ${res.status}`);
     }
 
     const cities = await res.json();

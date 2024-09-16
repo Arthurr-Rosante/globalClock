@@ -1,7 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+::-webkit-scrollbar {
+  width: 1rem;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 
 body {
@@ -17,10 +24,113 @@ body {
   z-index: 100;
   color: white;
   font-size: 12px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   padding: 2px 5px;
   border-radius: 1rem;
-
   pointer-events: none;
   user-select: none;
+}
+
+.timezone-list {
+  color: white;
+  position: absolute;
+  z-index: 200;
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 25%;
+  height: 100%;
+  transition: all 150ms linear;
+  left: -20%;
+  padding: 1rem;
+  padding-right: 2rem;
+  border-right: 5px solid white;
+}
+
+.timezone-list:hover {
+  left: 0;
+}
+
+.timezone-list > h1 {
+  text-align: center;
+  padding-bottom: 0.2rem;
+  margin-bottom: 1rem;
+}
+
+.timezone-list > #list {
+  overflow-y: scroll;
+  list-style: none;
+  height: 90%;
+}
+
+#list > .list-item {
+  background-color: #121212;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  position: relative;
+  border-radius: 1rem;
+  width: 98%;
+}
+#list > .list-item > .name {
+  font-size: 18px;
+}
+
+#list > .list-item > span:nth-of-type(1) {
+  font-size: 16px;
+  color: #ffffff80;
+}
+
+#list > .list-item > .name,
+#list > .list-item > span {
+  margin-left: 0.5rem;
+}
+
+#list > .list-item > .timer {
+  position: absolute;
+  top: 50%;
+  right: 15%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  font-weight: bold;
+  border-bottom: 1px solid black;
+  border-color: white;
+  letter-spacing: 1.5px;
+}
+
+#list > .list-item > button {
+  color: white;
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+  padding: 0.2rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+#list > .list-item > button:hover {
+  color: orangered;
+}
+
+.rotationToggler {
+  background-color: black;
+  color: white;
+  border: 3px solid white;
+  text-transform: capitalize;
+  font-size: 18px;
+  font-weight: bolder;
+  position: absolute;
+  z-index: 100;
+  top: 20px;
+  right: 20px;
+
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.rotationToggler > input {
+  width: 1rem;  
+  height: 1rem;
 }

@@ -1,7 +1,9 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { dotsGroup } from "./assets/addDot.js";
-import drawCities from "./assets/drawCities.js";
+import { dotsGroup } from "./assets/utils/addDot.js";
+import drawCities from "./assets/utils/drawCities.js";
+import addCityToList from "./assets/utils/addCityToList.js";
+import { updateCityTimes, syncWithMinutes } from "./assets/utils/updateCityTimes.js";
 
 // ========== IMPORTING THE ASSETS ========== //
 import { earth } from "./assets/meshes/earth.js";
@@ -38,14 +40,7 @@ controls.enablePan = false;
 // ========== RAYCASTER CONFIGURATION ========== //
 const raycaster = new THREE.Raycaster();
 const pointer = new THREE.Vector2();
-
-function onMouseMove(event) {
-  pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
-  pointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
-
-  raycaster.setFromCamera(pointer, camera);
-  const intersections = raycaster.intersectObjects(dotsGroup.children, true);
-}
+export const list = JSON.parse(localStorage.getItem("listOfCities")) || [];
 
 function onClick(event) {
   pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
@@ -53,9 +48,24 @@ function onClick(event) {
 
   raycaster.setFromCamera(pointer, camera);
   const intersections = raycaster.intersectObjects(dotsGroup.children, true);
-}
 
-window.addEventListener("mousemove", onMouseMove);
+  if (intersections.length === 0) return;
+
+  const city = intersections[0].object.userData;
+  const exists = list.some(
+    (cty) => cty.name === city.name && cty.timezone === city.timezone
+  );
+
+  if (exists) {
+    alert(`${city.name} já se encontra na lista.`);
+    return;
+  }
+
+  list.push(city);
+  localStorage.setItem("listOfCities", JSON.stringify(list));
+
+  addCityToList(city);
+}
 window.addEventListener("click", onClick);
 
 // ========== THE LIGHTING OF THE SCENE ========== //
@@ -80,8 +90,8 @@ earthGroup.add(clouds);
 earthGroup.add(atmosphere);
 drawCities();
 
-const earthRotation = 0.0; // default => 0.0005
-const cloudsRotation = 0.0009; // default => 0.0009
+let earthRotation = 0.0005; // default => 0.0005
+let cloudsRotation = 0.0009; // default => 0.0009
 const starsRotation = 0.0002; // default => 0.0002
 
 // ========== ANIMATION LOOP ========== //
@@ -137,4 +147,25 @@ window.addEventListener("resize", () => {
   renderer.setSize(w, h);
   camera.aspect = w / h;
   camera.updateProjectionMatrix();
+});
+
+// ========== HANDLING THE ON LOAD EVENT ========== //
+window.addEventListener("load", () => {
+  list.forEach((city) => {
+    addCityToList(city);
+  });
+  updateCityTimes();
+  syncWithMinutes();
+});
+
+// ========== TOGGLE ROTATION ========== //
+const rotationToggler = document.getElementById("inToggler");
+rotationToggler.addEventListener("change", () => {
+  if (rotationToggler.checked) {
+    earthRotation = 0.000001;
+    cloudsRotation = 0;
+  } else {
+    earthRotation = 0.0005;
+    cloudsRotation = 0.0009;
+  }
 });
