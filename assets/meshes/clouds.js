@@ -1,7 +1,7 @@
 import * as THREE from "three";
 
 const cloudsMaterial = new THREE.MeshStandardMaterial({
-  map: new THREE.TextureLoader().load("./assets/img/earth_clouds2k.jpg"),
+  map: new THREE.TextureLoader().load("/images/earth_clouds2k.jpg"),
   transparent: true,
   opacity: 0.2,
 });

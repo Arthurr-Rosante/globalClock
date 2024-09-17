@@ -2,7 +2,7 @@ import { addDot } from "./addDot.js";
 
 export default async function drawCities() {
   try {
-    const res = await fetch("../cities.json");
+    const res = await fetch("/cities.json");
     if (!res.ok) {
       throw new Error(`Response status: ${res.status}`);
     }
